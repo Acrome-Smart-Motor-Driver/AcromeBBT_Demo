@@ -1,14 +1,43 @@
-# AcromeBBT_Demo
+# Acrome Ball Balancing Table - Acrome Smart Motor Driver Communication
 
-The provided Python code establishes communication between the Acrome Ball Balancing Table interface and the Acrome Smart Motor Drivers. Here's a summary of the code:
+This Python code facilitates communication between the Acrome Ball Balancing Table interface and the Acrome Smart Motor Drivers. It allows data exchange between the interface and the motor drivers, enabling control of the table's actuators based on joystick input.
 
-The code imports necessary modules, classes, and functions for the program to run, including smd, socket, copy, sys, traceback, struct, time, and concurrent.futures.
-It creates a queue object s_q for sharing data between threads.
-The Server class is defined, which creates a socket and receives data from a client.
-The loop_server function continuously receives position data from a server and puts it into a queue for further processing.
-The loop_smd function continuously reads joystick data and sends it to a server while also receiving data from the server to control two actuators.
-The code tries to assign the string 'COM5' to the variable smd_port. If an IndexError occurs, it means the user did not provide the correct number of command line arguments.
-Several objects and variables are initialized, including an instance of the Master class for communication with hardware devices, an instance of the Server class, and a socket object for UDP communication.
-A thread pool executor is created with a maximum of 6 worker threads. The loop_server and loop_smd functions are submitted to the executor to run in separate threads.
-Exception handling is performed to catch and print any exceptions that occur during the execution of the server and master daemon threads.
-Please note that without the specific implementations of the Server and Master classes, it's difficult to provide a comprehensive understanding of the code's functionality and how it interacts with the Acrome Ball Balancing Table and Smart Motor Drivers.
+## Code Overview
+
+The provided Python code consists of the following components:
+
+1. Importing necessary modules and classes: The required modules and classes for the program's functionality are imported, including socket, copy, sys, traceback, struct, time, and concurrent.futures.
+
+2. Server Class: This class creates a socket and receives data from a client.
+
+3. `loop_server` Function: This function continuously receives position data from a server and shares it with a master by putting it into a queue.
+
+4. `loop_smd` Function: This function continuously reads joystick data and sends it to a server while also receiving data from the server to control two actuators.
+
+5. Exception Handling: The code handles exceptions that may occur during the execution of the server and master daemon threads.
+
+## Usage
+
+To use this code for communication between the Acrome Ball Balancing Table interface and the Acrome Smart Motor Drivers, follow these steps:
+
+1. Ensure that the necessary Python modules are installed. You can use `pip` to install any missing dependencies.
+
+2. Connect the Acrome Ball Balancing Table and the Acrome Smart Motor Drivers to your system.
+
+3. Adjust the code as needed to specify the correct IP address, port, and any other configuration details for the server and socket objects.
+
+4. Run the Python script.
+
+## Notes
+
+- This code assumes the availability of the `smd.smd` module, which contains the `Master` and `Index` classes required for motor driver communication. Make sure this module is present or importable.
+
+- The specific implementation details of the `Server` and `Master` classes are not provided in the code snippet. These classes likely encapsulate the communication protocols and interfaces specific to the Acrome Ball Balancing Table and Acrome Smart Motor Drivers.
+
+- It's important to have a clear understanding of the Acrome Ball Balancing Table and Acrome Smart Motor Driver's documentation and APIs to properly integrate and utilize this code.
+
+- Additional error handling and exception cases may need to be implemented to ensure robustness and reliability in a production environment.
+
+- Consider documenting the specific steps and requirements for setting up the communication between the Acrome Ball Balancing Table and the Acrome Smart Motor Drivers to provide comprehensive usage instructions.
+
+Please consult the relevant documentation or contact the Acrome Robotics for further details on the Acrome Ball Balancing Table and Acrome Smart Motor Drivers' integration and usage.
